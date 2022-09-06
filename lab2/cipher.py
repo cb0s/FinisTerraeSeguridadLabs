@@ -3,7 +3,7 @@ from typing import List
 
 
 def hash_256(s: str) -> str:
-    return hashlib.sha256(s).hexdigest()
+    return hashlib.sha256(s.encode('utf8')).hexdigest()
 
 
 def rot_chr(c: str, n: int) -> str:
