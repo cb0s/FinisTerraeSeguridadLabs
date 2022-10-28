@@ -1,5 +1,7 @@
 # Documentation
 
+This project was developed by **Belen Rojas**, **Roberto Pineda**, and **Cedric Bös** as a university project for Seguridad informática at the Universidad Finis Terrae in Santiago de Chile in the second semestre of 2022.
+
 ## Message Format
 
 This implementation uses a simple, yet effective, custom message format. It is used to determine in which state the algorithm is and which algorithms to use in the encryption process.
