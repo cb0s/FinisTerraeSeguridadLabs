@@ -34,6 +34,8 @@ def main() -> NoReturn:
 
     print("Receiving encrypted message")
     msg = client.recv(BUFFER_SIZE).decode('utf8')
+
+    print("Decrypting...")
     msg = rsa.decrypt(msg)
 
     print(f"Saving message to {OUTPUT_PATH}")

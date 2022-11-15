@@ -1,11 +1,12 @@
 import random
 from dataclasses import dataclass
+from typing import List
 
 
-UPPER_BOUND: int = 97    # 9999991
-LOWER_BOUNDL int = 11    # 1000003
+UPPER_BOUND: int = 999
+LOWER_BOUND: int = 100
 
-LOWER_BOUND_COPRIME: int = 3
+LOWER_BOUND_COPRIME: int = 41
 
 
 @dataclass
@@ -86,7 +87,7 @@ def _is_prime(num: int) -> bool:
 
 def _get_random_prime(lower_bound: int = LOWER_BOUND,
                       upper_bound: int = UPPER_BOUND,
-                      black_list: list[int] = None) -> int:
+                      black_list: List[int] = None) -> int:
     if not black_list:
         black_list = list()
 
