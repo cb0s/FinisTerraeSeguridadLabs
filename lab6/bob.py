@@ -31,9 +31,10 @@ def main() -> NoReturn:
     rsa_packet = json.loads(rsa_packet_str)
 
     rsa = RSA(rsa_packet['n'], rsa_packet['d'])
+    print(rsa)
 
     print("Receiving encrypted message")
-    msg = client.recv(BUFFER_SIZE).decode('utf8')
+    msg = client.recv(BUFFER_SIZE)
 
     print("Decrypting...")
     msg = rsa.decrypt(msg)

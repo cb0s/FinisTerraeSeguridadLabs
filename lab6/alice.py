@@ -25,13 +25,14 @@ def load_msg(path: str) -> str:
 
 
 def handle_client(client) -> None:
-    print(" Generating RSA params")
+    print(" Generating RSA parameters")
     rsa = gen_rsa_params()
 
     packet = {
         'n':    rsa.n,
         'd':    rsa.d
     }
+    print(f"  {rsa}")
 
     print(" Sending RSA information")
     client.send(json.dumps(packet).encode('utf8'))
@@ -42,7 +43,7 @@ def handle_client(client) -> None:
     time.sleep(.25)     # to ensure client is ready
 
     print(" Sending encrypted message")
-    client.send(msg.encode('utf8'))
+    client.send(msg)
 
 
 def main() -> NoReturn:
