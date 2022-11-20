@@ -53,6 +53,7 @@ class RSA:
     def decrypt_num(self, i: int) -> int:
         return pow(i, self.d, self.n)
 
+
 def gen_rsa_params() -> RSA:
     print("  p...")
     p = _get_random_prime()
@@ -165,11 +166,12 @@ def _is_prime(num: int) -> bool:
     return True
 
 
+@nb.njit(cache=True)
 def _get_random_prime(lower_bound: int = LOWER_BOUND,
                       upper_bound: int = UPPER_BOUND,
                       black_list: List[int] = None) -> int:
     if not black_list:
-        black_list = list()
+        black_list = list([-1])
 
     rand = random.randint(lower_bound, upper_bound)
     if _is_prime(rand) and rand not in black_list:

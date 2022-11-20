@@ -11,6 +11,10 @@ warnings.filterwarnings("ignore")
 LOWER_BOUND: int = 100_000_000_000_000 # 1_000_000_007
 UPPER_BOUND: int = 1_000_000_000_000_000
 
+# Takes more time (~ 1 min), but also works
+# LOWER_BOUND: int = 100_000_000_000_000_003 # 1_000_000_007
+# UPPER_BOUND: int = 1_799_999_999_999_999_999
+
 ENDIAN: str = 'little'
 
 BYTE_COUNT: int = 16
@@ -203,11 +207,12 @@ def _is_prime(num: int) -> bool:
     return True
 
 
+@nb.njit(cache=True)
 def _get_random_prime(lower_bound: int = LOWER_BOUND,
                       upper_bound: int = UPPER_BOUND,
                       black_list: List[int] = None) -> int:
     if not black_list:
-        black_list = list()
+        black_list = list([-1])
 
     rand = random.randint(lower_bound, upper_bound)
     if _is_prime(rand) and rand not in black_list:
